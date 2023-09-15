@@ -24,7 +24,6 @@ Description:
 -Defines crucial network parameters like maximum packet size, MAC address registers, and control register addresses for different network operations.
 -This driver can send and receive network packets and also monitor the status and statistics of the network device.
 
-
 ## **TCP/IP Chat Application**
 _Languages and Interfaces: C, POSIX Socket API_
 
@@ -34,7 +33,6 @@ Description:
 -The server has the capability to send messages to a specific target client.
 -Both server and client perform necessary cleanup operations when the connection closes.
 -The application limits the maximum number of clients to optimize resource usage.
-
 
 ## **UDP Broadcast Server & Client**
 _Languages and Interfaces: C, POSIX Socket API_
