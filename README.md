@@ -2,40 +2,51 @@
 
 This repository contains several projects I have worked on, related to network programming and kernel development. The projects are detailed below:
 
-## **UDP Broadcast Server & Client**
-_Languages and Interfaces: C, POSIX Socket API_
-
-Description:
-- A UDP broadcasting solution that consists of a server and a client.
-- The server captures and displays incoming messages.
-- The client persistently broadcasts messages across the network.
-- Utilizes the POSIX socket API for message reception and address handling.
-
-## **TCP/IP Chat Application**
-_Languages and Interfaces: C, POSIX Socket API_
-
-Description:
-- A chat application that supports both server and client functionalities.
-- Multithreading with pthread is employed to handle multiple client connections simultaneously.
-- Each client is assigned a unique ID to enable targeted messaging.
-- Communication is optimized using essential socket functions, ensuring real-time feedback.
-
-## **Linux Kernel Character Device Driver**
+## **Linux Kernel Character Driver**
 _Languages and Interfaces: C, Linux Kernel API_
 
 Description:
-- Implements device interaction through file operations.
-- Ensures safe data transfers between user space and kernel space.
-- Utilizes timers to schedule data writes.
-- Monitors device readiness.
-- Manages resources when the module exits.
+-Designed as a character device driver module for the Linux kernel.
+-Defines an input buffer with a maximum size to store data from the user.
+-Defines different IOCTL commands. These commands control different functions of the device, such as retrieving the buffer size, clearing the buffer, or reversing the data.
+-Uses a timer to perform operations at regular intervals. The timer triggers specific functions by making callbacks at set intervals.
+-Defines a write function for the character device. This function copies data from the user's space and performs specific operations.
+-This driver processes, stores, and returns the data taken from the user.
+
 
 ## **Linux Kernel Network Driver**
 _Languages and Interfaces: C, Linux Kernel API_
 
 Description:
-- A partial implementation of a custom network driver for the Linux kernel.
-- Code snippet manages device MAC address settings, VLAN configurations, packet reception/transmission using DMA, interrupt handling, and more.
-- Utilizes memory-mapped IO functions (ioread32, iowrite32) to interact with hardware registers.
-- Uses DMA (Direct Memory Access) to efficiently transfer data to/from network hardware.
-- NAPI (New API) is used to handle packet processing in a more efficient manner during high traffic scenarios.
+-Designed as a network driver module for the Linux kernel.
+-Contains macro values and constants to define different network device registers.
+-Defines control registers and memory addresses for Direct Memory Access (DMA) to optimize data transfers.
+-Defines crucial network parameters like maximum packet size, MAC address registers, and control register addresses for different network operations.
+-This driver can send and receive network packets and also monitor the status and statistics of the network device.
+
+
+## **TCP/IP Chat Application**
+_Languages and Interfaces: C, POSIX Socket API_
+
+Description:
+-The server assigns a unique ID to every connected client. This allows sending messages to a specific client.
+-Clients listen to incoming messages using separate threads, handling multiple connections simultaneously.
+-The server has the capability to send messages to a specific target client.
+-Both server and client perform necessary cleanup operations when the connection closes.
+-The application limits the maximum number of clients to optimize resource usage.
+
+
+## **UDP Broadcast Server & Client**
+_Languages and Interfaces: C, POSIX Socket API_
+
+Description:
+-Utilizes the UDP protocol for sending and receiving data.
+
+Client:
+-Creates a socket to send messages to a specific IP address and port.
+-Sets up the socket settings to allow broadcasting messages to all devices in a specific network.
+
+Server:
+-Continuously listens to incoming data on a specific port.
+-Creates a socket to receive data and binds this socket to a specific port.
+-Displays the received data on the screen.

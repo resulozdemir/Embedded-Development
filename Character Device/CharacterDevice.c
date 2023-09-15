@@ -19,11 +19,9 @@ static DECLARE_WAIT_QUEUE_HEAD(resul_wq);
 static struct timer_list my_timer;
 static int timer_expired = 0;
 
-#define IOCTL_SEND_DATA     _IOW('X', 0, int)
-#define IOCTL_RECEIVE_DATA  _IOR('X', 1, int)
-#define IOCTL_GET_SIZE 	    _IOR('X', 2, int)
-#define IOCTL_CLEAR_BUFFER  _IO('X', 3)
-#define IOCTL_REVERSE_DATA  _IO('X', 4)
+#define IOCTL_GET_SIZE 	    _IOR('X', 0, int)
+#define IOCTL_CLEAR_BUFFER  _IO('X', 1)
+#define IOCTL_REVERSE_DATA  _IO('X', 2)
 
 void my_timer_callback(struct timer_list *t) {
      timer_expired = 1; 
@@ -70,14 +68,6 @@ unsigned int resul_poll(struct file *filp, poll_table *wait)
 long resul_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
     switch (cmd) {
-        case IOCTL_SEND_DATA:
-            if(copy_from_user(inp, (char __user *)arg, MAX_SIZE))
-                return -EFAULT;
-            break;
-        case IOCTL_RECEIVE_DATA:
-            if (copy_to_user((char __user *)arg, inp, sizeof(inp)))
-                return -EFAULT;
-            break; 
         case IOCTL_GET_SIZE:
         {
             int size = sizeof(inp);
