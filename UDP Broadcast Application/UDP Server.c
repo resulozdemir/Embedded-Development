@@ -30,7 +30,7 @@ int main(void) {
     while(1) {														
     	memset(buf, 0, sizeof(buf));						    				
         if (recvfrom(s, buf, 512, 0, (struct sockaddr*)&si_other, &slen) == -1) {		
-            printf("Binding failed.\n");								
+            printf("Receiving data failed.\n");								
         	exit(1);					
         }
 

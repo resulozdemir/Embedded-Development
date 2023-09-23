@@ -77,7 +77,7 @@ void *handle_client(void *arg) {
             return NULL;
         }
 		
-	sscanf(data, "%d", &recipient_id);
+	    sscanf(data, "%d", &recipient_id);
         send_message_to_client(recipient_id, strchr(data, ' ') + 1);
         	
         if (strcmp(data, "exit\n") == 0 || bytes_read == 0) {
