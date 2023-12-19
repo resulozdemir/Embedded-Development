@@ -55,8 +55,8 @@ Server:
 _Languages and Interfaces: Python, Scapy and IPTables_
 
 Description:
--Initial Setup: Configures firewall rules to control incoming traffic, including allowances for established connections, limitations on TCP requests, and NAT configuration.
--Blocking Specific Traffic: Identifies and blocks traffic based on certain IP addresses and ports.
--Real-Time Rule Adjustment: Modifies firewall settings on-the-fly to block traffic from newly detected suspicious sources or ports.
--Traffic Monitoring and Analysis: Continuously monitors and scrutinizes network packets for source and destination information.
--Responsive Blocking: Automatically updates firewall settings to block traffic matching predefined criteria of unwanted sources or destinations.
+- Initial Setup: Configures firewall rules to control incoming traffic, including allowances for established connections, limitations on TCP requests, and NAT configuration.
+- Blocking Specific Traffic: Identifies and blocks traffic based on certain IP addresses and ports.
+- Real-Time Rule Adjustment: Modifies firewall settings on-the-fly to block traffic from newly detected suspicious sources or ports.
+- Traffic Monitoring and Analysis: Continuously monitors and scrutinizes network packets for source and destination information.
+- Responsive Blocking: Automatically updates firewall settings to block traffic matching predefined criteria of unwanted sources or destinations.
