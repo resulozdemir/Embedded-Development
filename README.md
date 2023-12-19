@@ -18,11 +18,12 @@ Description:
 _Languages and Interfaces: C, Linux Kernel API_
 
 Description:
-- Designed as a network driver module for the Linux kernel.
-- Contains macro values and constants to define different network device registers.
-- Defines control registers and memory addresses for Direct Memory Access (DMA) to optimize data transfers.
-- Defines crucial network parameters like maximum packet size, MAC address registers, and control register addresses for d different network operations.
-- This driver can send and receive network packets and also monitor the status and statistics of the network device.
+- The module initializes the network device, sets up necessary configurations, and registers it with the Linux kernel. Upon module removal, it cleans up resources and unregisters the device.
+- The driver can set the MAC address for the device and handle multicast addresses, configuring the device to operate in various multicast modes.
+- The driver can send and receive packets using DMA buffers. It interfaces with the kernel's networking subsystem to handle packet transmission and reception.
+- An interrupt service routine manages device interrupts, handling events like packet reception, packet transmission, and errors.
+- The driver offers functions to change device configurations, such as MTU size, base address, and IRQ settings.
+- It provides support for VLAN tag handling and retrieves network statistics from the device.
 
 ## **TCP/IP Chat Application**
 _Languages and Interfaces: C, POSIX Socket API_
